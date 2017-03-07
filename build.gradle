@@ -1,0 +1,28 @@
+plugins {
+  id 'java'
+  id 'application'
+  id "com.github.johnrengelman.shadow" version "1.2.4"
+}
+
+group 'com.example'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+// The main class of the application
+mainClassName = 'com.example.OrderApplication'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'io.dropwizard:dropwizard-core:1.0.5'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.2'
+}
+
