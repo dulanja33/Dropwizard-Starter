@@ -18,8 +18,13 @@ repositories {
     mavenCentral()
 }
 
+run{
+    args 'server', 'config.yml'
+}
+
 dependencies {
     compile 'io.dropwizard:dropwizard-core:1.0.5'
+    compile 'org.projectlombok:lombok:1.16.10'
 }
 
 task wrapper(type: Wrapper) {
