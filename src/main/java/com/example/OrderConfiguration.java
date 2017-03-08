@@ -1,24 +1,21 @@
 package com.example;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
-import org.hibernate.validator.constraints.NotEmpty;
+import io.dropwizard.db.DataSourceFactory;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author by Dulanja Wijethunga.
  */
+@Getter
+@Setter
 public class OrderConfiguration extends Configuration {
 
-    @NotEmpty
-    private String defaultName = "Order";
-
-    @JsonProperty
-    public String getDefaultName() {
-        return defaultName;
-    }
-
-    @JsonProperty
-    public void setDefaultName(String name) {
-        this.defaultName = name;
-    }
+    @Valid
+    @NotNull
+    private DataSourceFactory database = new DataSourceFactory();
 }

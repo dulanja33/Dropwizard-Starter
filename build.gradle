@@ -1,7 +1,7 @@
 plugins {
-  id 'java'
-  id 'application'
-  id "com.github.johnrengelman.shadow" version "1.2.4"
+    id 'java'
+    id 'application'
+    id "com.github.johnrengelman.shadow" version "1.2.4"
 }
 
 group 'com.example'
@@ -18,13 +18,16 @@ repositories {
     mavenCentral()
 }
 
-run{
+run {
     args 'server', 'config.yml'
 }
 
 dependencies {
     compile 'io.dropwizard:dropwizard-core:1.0.5'
+    compile 'io.dropwizard:dropwizard-migrations:1.0.5'
+    compile 'io.dropwizard:dropwizard-hibernate:1.0.5'
     compile 'org.projectlombok:lombok:1.16.10'
+    compile 'com.h2database:h2:1.4.193'
 }
 
 task wrapper(type: Wrapper) {
