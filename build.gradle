@@ -27,6 +27,7 @@ dependencies {
     compile 'io.dropwizard:dropwizard-migrations:1.0.5'
     compile 'io.dropwizard:dropwizard-hibernate:1.0.5'
     compile 'io.dropwizard:dropwizard-auth:1.0.5'
+    compile 'io.paradoxical:dropwizard-swagger:2.4'
     compile 'org.projectlombok:lombok:1.16.10'
     compile 'com.h2database:h2:1.4.193'
 }

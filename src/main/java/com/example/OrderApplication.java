@@ -17,6 +17,9 @@ import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.paradoxical.dropwizard.swagger.SwaggerConfiguration;
+import io.paradoxical.dropwizard.swagger.SwaggerUIConfigurator;
+import io.paradoxical.dropwizard.swagger.bundles.SwaggerUIBundle;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
 /**
@@ -47,6 +50,15 @@ public class OrderApplication extends Application<OrderConfiguration> {
     public void initialize(Bootstrap<OrderConfiguration> bootstrap) {
         bootstrap.addBundle(migrationsBundle);
         bootstrap.addBundle(hibernateBundle);
+
+        SwaggerConfiguration configuration = new SwaggerConfiguration();
+        configuration.setTitle("Order MicroService");
+        configuration.setDescription("Sample Order System");
+        configuration.setResourcePackage("com.example.resource");
+        configuration.setVersion("1.0");
+        configuration.setScan(true);
+
+        bootstrap.addBundle(new SwaggerUIBundle(SwaggerUIConfigurator.forConfig(configuration)));
     }
 
     @Override
