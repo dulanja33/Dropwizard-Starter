@@ -59,7 +59,7 @@ public class OrderResource {
     @RolesAllowed("ADMIN")
     @UnitOfWork
     public Orders createOrder(@Auth User user, Orders orders) {
-        LOGGER.info("Logged in user:{}", user);
+        LOGGER.debug("Logged in user:{}", user);
         return orderDao.createOrder(orders);
     }
 }

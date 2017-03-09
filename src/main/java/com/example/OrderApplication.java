@@ -6,6 +6,7 @@ import com.example.beans.Orders;
 import com.example.beans.User;
 import com.example.dao.OrderDao;
 import com.example.filter.OrderIdValidateFeature;
+import com.example.health.OrderHealthCheck;
 import com.example.resource.OrderResource;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
@@ -60,5 +61,6 @@ public class OrderApplication extends Application<OrderConfiguration> {
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
         environment.jersey().register(OrderIdValidateFeature.class);
+        environment.healthChecks().register("order", new OrderHealthCheck());
     }
 }
