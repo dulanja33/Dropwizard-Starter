@@ -3,6 +3,7 @@ package com.example.resource;
 import com.example.beans.Orders;
 import com.example.beans.User;
 import com.example.dao.OrderDao;
+import com.example.filter.OrderIdValidate;
 import io.dropwizard.auth.Auth;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.params.LongParam;
@@ -47,6 +48,7 @@ public class OrderResource {
     @Path("/order/{id}")
     @RolesAllowed({"ADMIN", "BASIC_USER"})
     @UnitOfWork
+    @OrderIdValidate
     public Orders getOrder(@PathParam("id") LongParam id) {
         Optional<Orders> order = orderDao.findById(id.get());
         return order.isPresent() ? order.get() : null;
